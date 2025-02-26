@@ -8,6 +8,7 @@ const store = userBoardStore();
 
 onMounted(async () => {
     await store.fetchList();
+
 });
 </script>
 
