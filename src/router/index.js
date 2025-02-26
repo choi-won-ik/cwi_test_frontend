@@ -1,7 +1,9 @@
 import { createWebHistory, createRouter } from 'vue-router'
 
+
 import list from '../page/list.vue'
 import details from '../page/details.vue'
+
 
 
 const routes = [

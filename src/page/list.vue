@@ -1,7 +1,14 @@
 <script setup>
 import { RouterLink } from 'vue-router';
+import { ref,onMounted } from "vue";
+import { userBoardStore } from '../store/userBoardStore.js';
 
 
+const store = userBoardStore();
+
+onMounted(async () => {
+    await store.fetchList();
+});
 </script>
 
 <template>
@@ -11,20 +18,19 @@ import { RouterLink } from 'vue-router';
       
     </div>
   </div>
-
-  <div class="my-3 p-3 bg-body rounded shadow-sm">
-    <RouterLink style="align-items: center;" class="d-flex text-body-secondary pt-3">
+  <div v-for="order in store.list" :key="order.idx" class="my-3 p-3 bg-body rounded shadow-sm">
+    <RouterLink :to="`/details/${order.idx}`"
+    style="align-items: center;" class="d-flex text-body-secondary pt-3">
       <div style="display: flex; width: 30px; justify-content: center; align-items: center;" class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false">   
-        <div style="size: 16px;" >1</div></div>
+        <div style="size: 16px;" >{{ order.idx }}</div></div>
       <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
         <div class="d-flex justify-content-between">
-          <strong class="text-gray-dark">개시글 이름</strong>
-          <a href="#">댓글 수</a>
+          <strong class="text-gray-dark">제목 : {{ order.title }}</strong>
+          <a href="#">{{ order.commentCount }}</a>
         </div>
-        <span class="d-block">작성자</span>
+        <span class="d-block">작성자 : {{ order.writer }}</span>
       </div>
     </RouterLink>
-    
   </div>
 </template>
 
