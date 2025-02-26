@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 import axios from "axios";
 
-export const userListStore = defineStore("board", {
+export const userBoardStore = defineStore("board", {
   state: () => ({
     list: [],
   }),

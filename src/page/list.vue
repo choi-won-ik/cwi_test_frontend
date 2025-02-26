@@ -1,15 +1,13 @@
 <script setup>
 import { RouterLink } from 'vue-router';
 import { ref,onMounted } from "vue";
-import { userListStore } from '../store/userListStore.js';
+import { userBoardStore } from '../store/userBoardStore.js';
 
 
-const store = userListStore();
-const list = ref('');
+const store = userBoardStore();
+
 onMounted(async () => {
     await store.fetchList();
-    list.value=store.list;
-    console.log(list.value);
 });
 </script>
 
