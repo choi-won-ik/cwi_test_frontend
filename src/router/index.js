@@ -3,6 +3,7 @@ import { createWebHistory, createRouter } from 'vue-router'
 
 import list from '../page/list.vue'
 import details from '../page/details.vue'
+import regist from '../page/regist.vue'
 
 
 
@@ -14,6 +15,10 @@ const routes = [
   { path: '/details/:idx', 
     name: 'details',
     component: details,
+  },
+  { path: '/regist', 
+    name: 'regist',
+    component: regist,
   },
 ]
 

@@ -13,11 +13,18 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm" style="background-color: purple;">
-    <div class="lh-1">
-      <h1 class="h6 mb-0 text-white lh-1">개시글</h1>
+  <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm" style="background-color: purple; position: relative;">
+    <div style="display: flex; " class="lh-1">
+      <h1 class="h6 mb-0 text-white lh-1" style="font-size: 30px;">개시글</h1>
       
     </div>
+    
+    <button style="position: absolute; width: 150px; right: 1%;" type="button" class="btn btn-dark">
+      <RouterLink style="color: white;" to="/regist">
+        개시글 작성
+      </RouterLink>
+    </button>
+
   </div>
   <div v-for="order in store.list" :key="order.idx" class="my-3 p-3 bg-body rounded shadow-sm">
     <RouterLink :to="`/details/${order.idx}`"
@@ -32,7 +39,9 @@ onMounted(async () => {
         <span class="d-block">작성자 : {{ order.writer }}</span>
       </div>
     </RouterLink>
+    
   </div>
+  
 </template>
 
 <style lang="scss" scoped>
